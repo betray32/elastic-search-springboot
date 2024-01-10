@@ -30,14 +30,14 @@ public class ElasticService {
      * Elastic document to query
      */
     @Value("${elastic.document.index}")
-    private String flightIndex;
+    private String documentId;
 
     public List<Map<String, Object>> getFlightByNoseNbr(String noseNumber) {
         List<Map<String, Object>> resultList = new ArrayList<>();
 
         try {
             // set
-            SearchRequest searchRequest = new SearchRequest(flightIndex);
+            SearchRequest searchRequest = new SearchRequest(documentId);
             SearchSourceBuilder searchBuilder = new SearchSourceBuilder();
             searchBuilder.from(0);
             searchBuilder.size(1); // limit to 1 result, specific
